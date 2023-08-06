@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../custom_widgets/custom_app_bar.dart';
-import '../custom_widgets/custom_notes_item.dart';
+import '../custom_widgets/notes_list_view.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -15,12 +14,7 @@ class NotesView extends StatelessWidget {
         child: Column(
           children: [
             CustomAppBar(),
-            Expanded(child: ListView.builder(itemBuilder: (context,index){
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: NotesItem(),
-              );
-            })
+            Expanded(child: NotesListView(),
             )]
         ),
       ),
@@ -28,3 +22,5 @@ class NotesView extends StatelessWidget {
 
   }
 }
+
+
