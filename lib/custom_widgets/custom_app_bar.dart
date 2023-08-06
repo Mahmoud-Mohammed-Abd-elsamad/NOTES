@@ -5,15 +5,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'custom_search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  const CustomAppBar({required this.title, required this.icon});
+
+  final String title;
+  final IconData icon;
+
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return  Row(
       children: [
         SizedBox(height: 100,),
         Text("Notes",style: TextStyle(fontSize: 24),),
         Spacer(),
-        CostomSearchIcon()
+        CostomIcon(icon: icon,)
 
       ],);
   }
