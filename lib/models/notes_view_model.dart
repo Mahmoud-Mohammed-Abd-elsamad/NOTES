@@ -17,6 +17,4 @@ class NotesViewModel extends HiveObject{
     required this.title,required  this.content,
     required this.date});
 
-
-
 }
