@@ -1,5 +1,4 @@
 
-
 class NotesViewModel {
   final String title;
   final String content;
