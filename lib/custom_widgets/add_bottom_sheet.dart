@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_note/add_note_state.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_state.dart';
 import 'add_note_validate.dart';
 
 class AddBottomSheet extends StatefulWidget {
@@ -19,31 +21,10 @@ class _AddBottomSheetState extends State<AddBottomSheet> {
     AddNoteCubit provider = BlocProvider.of<AddNoteCubit>(context) ;
 
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 16),
-      child: BlocConsumer<AddNoteCubit,AddNoteState>(builder: (BuildContext context, state) {
-        return SingleChildScrollView(child: AddNoteValidate());
-      },
-      listener: (BuildContext context, Object? state) {
-        print("state changes $state");
-       if(state is AddNoteStateLoding){
-         provider.isLoding = true;
-       }else if(state is AddNoteStateSuccess) {
-         provider.isLoding = false;
-         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-           content: Text("Success add note"),)
-         );
-       }else if(state is AddNoteStateFailure){
-         provider.isLoding = false;
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(state.errorMessage+"55555"),)
-          );
-          Navigator.pop(context);
-          }
-       setState(() {
-
-       });
-      },
-      ),
+      padding:  EdgeInsets.only(bottom:MediaQuery.of(context).viewInsets.bottom,right: 16,left: 16),
+      child: BlocBuilder<NotesCubit,NotesState>(builder: (BuildContext context, state) {
+        return  const SingleChildScrollView(child: AddNoteValidate());
+      },),
     );
   }
 }

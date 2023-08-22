@@ -22,13 +22,13 @@ class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+      body: const Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(children: [
           CustomAppBar(title: 'Notes', icon: Icons.search,),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: NotesListView(),
             ),
           )

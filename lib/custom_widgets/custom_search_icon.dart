@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CostomIcon extends StatelessWidget {
-   CostomIcon({required this.icon});
+   CostomIcon({required this.icon,this.onPressed});
 
   IconData icon ;
+   void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CostomIcon extends StatelessWidget {
         color: Color(0xff3a3a3a),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
-      child:IconButton(onPressed: (){}, icon:  Icon(icon),)
+      child:IconButton(onPressed:onPressed, icon:  Icon(icon),)
     );
   }
 }
