@@ -5,10 +5,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'custom_search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({required this.title, required this.icon});
+  const CustomAppBar({required this.title, required this.icon,this.onPreesd});
 
   final String title;
   final IconData icon;
+  final void Function()? onPreesd;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomAppBar extends StatelessWidget {
         SizedBox(height: 100,),
         Text("Notes",style: TextStyle(fontSize: 24),),
         Spacer(),
-        CostomIcon(icon: icon,)
+        CostomIcon(icon: icon,onPressed:onPreesd ,)
 
       ],);
   }

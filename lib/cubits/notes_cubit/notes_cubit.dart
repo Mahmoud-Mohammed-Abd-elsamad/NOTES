@@ -14,6 +14,7 @@ class NotesCubit  extends Cubit<NotesState>{
       var notesBox = Hive.box<NotesViewModel>(kNotesBoc);
 
       notesList =  notesBox.values.toList();
+      emit(NotesSuccessState());
 
 
   }

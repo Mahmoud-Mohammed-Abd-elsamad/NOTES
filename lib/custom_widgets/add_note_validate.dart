@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note/add_note_cubit.dart';
 import 'package:notes_app/models/notes_view_model.dart';
 
@@ -58,19 +59,16 @@ class _AddNoteValidateState extends State<AddNoteValidate> {
               print("title>>>${title}");
               print("title>>>${content}");
 
+              DateTime now = DateTime.now();
+              String formattedDate = DateFormat('dd-MM-yyyy').format(now);
 
               NotesViewModel note =   NotesViewModel(color: Colors.greenAccent.value, title: title!,
-                 content: content!, date: DateTime.now().toString());
+                 content: content!, date: formattedDate);
               BlocProvider.of<AddNoteCubit>(context).addNote(note);
 
               BlocProvider.of<NotesCubit>(context).fetchaAllNotes();
 
-              print("title>>>${ BlocProvider.of<AddNoteCubit>(context).state}");
-
               Navigator.pop(context);
-              setState(() {
-
-              });
 
             }else{
               autovalidateMode = AutovalidateMode.always;
