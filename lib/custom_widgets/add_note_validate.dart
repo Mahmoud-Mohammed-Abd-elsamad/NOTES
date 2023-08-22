@@ -1,6 +1,11 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/add_note/add_note_cubit.dart';
+import 'package:notes_app/models/notes_view_model.dart';
 
+import '../cubits/notes_cubit/notes_cubit.dart';
 import 'custom_add_button.dart';
 import 'custom_text_field.dart';
 
@@ -52,6 +57,20 @@ class _AddNoteValidateState extends State<AddNoteValidate> {
               formKey.currentState!.save();
               print("title>>>${title}");
               print("title>>>${content}");
+
+
+              NotesViewModel note =   NotesViewModel(color: Colors.greenAccent.value, title: title!,
+                 content: content!, date: DateTime.now().toString());
+              BlocProvider.of<AddNoteCubit>(context).addNote(note);
+
+              BlocProvider.of<NotesCubit>(context).fetchaAllNotes();
+
+              print("title>>>${ BlocProvider.of<AddNoteCubit>(context).state}");
+
+              Navigator.pop(context);
+              setState(() {
+
+              });
 
             }else{
               autovalidateMode = AutovalidateMode.always;

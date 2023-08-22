@@ -1,20 +1,45 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_state.dart';
+import 'package:notes_app/models/notes_view_model.dart';
 
 import 'custom_notes_item.dart';
 
-class NotesListView extends StatelessWidget {
+class NotesListView extends StatefulWidget {
   const NotesListView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return  ListView.builder(
-        padding: EdgeInsets.zero,
-        itemBuilder: (context,index){
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: NotesItem(),
-      );
+  State<NotesListView> createState() => _NotesListViewState();
+}
 
-    });
+class _NotesListViewState extends State<NotesListView> {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+
+
+        return BlocBuilder<NotesCubit,NotesState>(
+
+          builder: (BuildContext context, state) {
+            List<NotesViewModel>  notesList = BlocProvider.of<NotesCubit>(context).notesList ?? [
+              NotesViewModel(color: 0xfffffff, title: 'empityList', content: 'empityList empityList empityList', date: '22-8-2023')]  ;
+
+            return ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: notesList.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: NotesItem(note: notesList[index],),
+                  );
+                });
+          }
+        );
+
+
+
   }
 }
