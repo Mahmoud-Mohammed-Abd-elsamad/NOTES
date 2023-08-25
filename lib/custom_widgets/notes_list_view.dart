@@ -24,8 +24,9 @@ class _NotesListViewState extends State<NotesListView> {
         return BlocBuilder<NotesCubit,NotesState>(
 
           builder: (BuildContext context, state) {
-            List<NotesViewModel>  notesList = BlocProvider.of<NotesCubit>(context).notesList ?? [
-              NotesViewModel(color: 0xfffffff, title: 'empityList', content: 'empityList empityList empityList', date: '22-8-2023')]  ;
+            List<NotesViewModel>  notesList = BlocProvider.of<NotesCubit>(context).notesList ?? []  ;
+
+
 
             return ListView.builder(
                 padding: EdgeInsets.zero,

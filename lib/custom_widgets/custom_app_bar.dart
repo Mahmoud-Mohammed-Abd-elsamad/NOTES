@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget {
     return  Row(
       children: [
         SizedBox(height: 100,),
-        Text("Notes",style: TextStyle(fontSize: 24),),
+        Text(title,style: TextStyle(fontSize: 24),),
         Spacer(),
         CostomIcon(icon: icon,onPressed:onPreesd ,)
 

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-class CustomTextField extends StatelessWidget {
-   CustomTextField({ this.onSaved,required this.hintText, required this.maxLines ,this.onChanged} );
+class CustomFormTextField extends StatelessWidget {
+   CustomFormTextField({ this.onSaved,required this.hintText, required this.maxLines ,this.onChanged} );
  final String hintText;
   final int maxLines;
  final  void Function(String?)? onSaved ;
